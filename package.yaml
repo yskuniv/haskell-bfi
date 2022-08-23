@@ -1,10 +1,10 @@
 name:                haskell-bfi
 version:             0.1.0.0
-github:              "githubuser/haskell-bfi"
+github:              "yskuniv/haskell-bfi"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+author:              "ysk"
+maintainer:          "ysk.univ.1007@gmail.com"
+copyright:           "2022 ysk"
 
 extra-source-files:
 - README.md
