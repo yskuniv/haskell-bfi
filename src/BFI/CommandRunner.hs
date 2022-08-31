@@ -54,14 +54,14 @@ runCommand IncDataPtr = do
   lift incBFMemoryPtr
 runCommand DecDataPtr = do
   lift decBFMemoryPtr
-runCommand IncData = do
+runCommand IncByte = do
   lift incBFMemoryData
-runCommand DecData = do
+runCommand DecByte = do
   lift decBFMemoryData
-runCommand OutputData = do
+runCommand OutputByte = do
   v <- lift getBFMemoryData
   liftIO $ putByte v
-runCommand InputData = do
+runCommand InputByte = do
   v <- liftIO getByte
   lift $ setBFMemoryData v
 runCommand _ = throwError "*** BUG ***"

@@ -20,10 +20,10 @@ parseProgram =
 toBFCommand :: Char -> Maybe BFCommand
 toBFCommand '>' = return IncDataPtr
 toBFCommand '<' = return DecDataPtr
-toBFCommand '+' = return IncData
-toBFCommand '-' = return DecData
-toBFCommand '.' = return OutputData
-toBFCommand ',' = return InputData
+toBFCommand '+' = return IncByte
+toBFCommand '-' = return DecByte
+toBFCommand '.' = return OutputByte
+toBFCommand ',' = return InputByte
 toBFCommand '[' = return CondJmpFwd
 toBFCommand ']' = return CondJmpBwd
 toBFCommand _ = Nothing
