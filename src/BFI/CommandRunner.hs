@@ -39,7 +39,7 @@ runCommands :: [BFCommand] -> BFIAction ()
 runCommands [] = return ()
 runCommands (CondJmpFwd : cs) = do
   (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
-  condRepeatRunCommands lcs
+  conditionalRepeatRunCommands lcs
   runCommands rcs
 runCommands (CondJmpBwd : _) = do
   throwError "unexpected ] found"
@@ -66,12 +66,12 @@ runCommand InputByte = do
   lift $ setByteToMemory v
 runCommand _ = throwError "*** BUG ***"
 
-condRepeatRunCommands :: [BFCommand] -> BFIAction ()
-condRepeatRunCommands commands = do
+conditionalRepeatRunCommands :: [BFCommand] -> BFIAction ()
+conditionalRepeatRunCommands commands = do
   v <- lift getByteFromMemory
   when (v /= 0) $ do
     runCommands commands
-    condRepeatRunCommands commands
+    conditionalRepeatRunCommands commands
 
 splitCommandsByCorrespondingCondJmpBwd :: Monad m => [BFCommand] -> ExceptT String m ([BFCommand], [BFCommand])
 splitCommandsByCorrespondingCondJmpBwd [] = throwError "corresponding ] not found"
