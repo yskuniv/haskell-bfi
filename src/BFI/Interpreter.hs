@@ -9,7 +9,7 @@ import BFI.Parser (parseProgram)
 import System.IO (hPutStrLn, stderr)
 
 runBFFile :: FilePath -> IO ()
-runBFFile filename = runProgram =<< readFile filename
+runBFFile path = runProgram =<< readFile path
 
 runProgram :: String -> IO ()
 runProgram prog = do
