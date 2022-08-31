@@ -3,12 +3,12 @@ module BFI.BFMemory
     BFMemoryAction,
     runBFMemoryT,
     runBFMemory,
-    getBFMemoryData,
-    setBFMemoryData,
-    incBFMemoryData,
-    decBFMemoryData,
-    incBFMemoryPtr,
-    decBFMemoryPtr,
+    getByteFromMemory,
+    setByteToMemory,
+    incByteOfMemory,
+    decByteOfMemory,
+    incDataPtrOfMemory,
+    decDataPtrOfMemory,
   )
 where
 
@@ -38,32 +38,32 @@ runBFMemoryT action = runDataArrayT (execStateT action 0) 0
 runBFMemory :: BFMemoryAction a -> [Word8]
 runBFMemory action = runIdentity $ runBFMemoryT action
 
-getBFMemoryData :: Monad m => BFMemoryActionT m Word8
-getBFMemoryData = do
+getByteFromMemory :: Monad m => BFMemoryActionT m Word8
+getByteFromMemory = do
   ptr <- get
   lift $ readDataArray ptr
 
-setBFMemoryData :: Monad m => Word8 -> BFMemoryActionT m ()
-setBFMemoryData v = do
+setByteToMemory :: Monad m => Word8 -> BFMemoryActionT m ()
+setByteToMemory v = do
   ptr <- get
   lift $ writeDataArray ptr v
 
-incBFMemoryData :: Monad m => BFMemoryActionT m ()
-incBFMemoryData = do
+incByteOfMemory :: Monad m => BFMemoryActionT m ()
+incByteOfMemory = do
   ptr <- get
   lift $ do
     v <- readDataArray ptr
     writeDataArray ptr (succ v)
 
-decBFMemoryData :: Monad m => BFMemoryActionT m ()
-decBFMemoryData = do
+decByteOfMemory :: Monad m => BFMemoryActionT m ()
+decByteOfMemory = do
   ptr <- get
   lift $ do
     v <- readDataArray ptr
     writeDataArray ptr (pred v)
 
-incBFMemoryPtr :: Monad m => BFMemoryActionT m ()
-incBFMemoryPtr = modify succ
+incDataPtrOfMemory :: Monad m => BFMemoryActionT m ()
+incDataPtrOfMemory = modify succ
 
-decBFMemoryPtr :: Monad m => BFMemoryActionT m ()
-decBFMemoryPtr = modify pred
+decDataPtrOfMemory :: Monad m => BFMemoryActionT m ()
+decDataPtrOfMemory = modify pred
