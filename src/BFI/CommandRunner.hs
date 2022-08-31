@@ -38,7 +38,7 @@ runBFIAction action handler =
 runCommands :: [BFCommand] -> BFIAction ()
 runCommands [] = return ()
 runCommands (CondJmpFwd : cs) = do
-  (lcs, rcs) <- splitByCondJmpBwd cs
+  (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
   condRepeatRunCommands lcs
   runCommands rcs
 runCommands (CondJmpBwd : _) = do
@@ -73,14 +73,14 @@ condRepeatRunCommands commands = do
     runCommands commands
     condRepeatRunCommands commands
 
-splitByCondJmpBwd :: Monad m => [BFCommand] -> ExceptT String m ([BFCommand], [BFCommand])
-splitByCondJmpBwd [] = throwError "corresponding ] not found"
-splitByCondJmpBwd (CondJmpBwd : cs) =
+splitCommandsByCorrespondingCondJmpBwd :: Monad m => [BFCommand] -> ExceptT String m ([BFCommand], [BFCommand])
+splitCommandsByCorrespondingCondJmpBwd [] = throwError "corresponding ] not found"
+splitCommandsByCorrespondingCondJmpBwd (CondJmpBwd : cs) =
   return ([], cs)
-splitByCondJmpBwd (CondJmpFwd : cs) = do
-  (lcs, rcs) <- splitByCondJmpBwd cs
-  (lrcs, rrcs) <- splitByCondJmpBwd rcs
+splitCommandsByCorrespondingCondJmpBwd (CondJmpFwd : cs) = do
+  (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
+  (lrcs, rrcs) <- splitCommandsByCorrespondingCondJmpBwd rcs
   return (CondJmpFwd : lcs ++ [CondJmpBwd] ++ lrcs, rrcs)
-splitByCondJmpBwd (c : cs) = do
-  (lcs, rcs) <- splitByCondJmpBwd cs
+splitCommandsByCorrespondingCondJmpBwd (c : cs) = do
+  (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
   return (c : lcs, rcs)
