@@ -13,5 +13,5 @@ main = runBFFile =<< execParser opts
         )
         ( fullDesc
             <> progDesc "Run FILE"
-            <> header "haskell-bfi - a BFI implemented in haskell"
+            <> header "haskell-bfi - A BFI implemented in haskell"
         )
