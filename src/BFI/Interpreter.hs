@@ -13,7 +13,10 @@ runBFFile path = runProgram =<< readFile path
 
 runProgram :: String -> IO ()
 runProgram prog = do
-  _ <- runBFIAction (runCommands $ parseProgram prog) errorHandler
+  _ <-
+    runBFIAction
+      (runCommands $ parseProgram prog)
+      errorHandler
   return ()
 
 --
