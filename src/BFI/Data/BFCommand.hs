@@ -6,10 +6,10 @@ where
 data BFCommand
   = IncDataPtr
   | DecDataPtr
-  | IncData
-  | DecData
-  | OutputData
-  | InputData
+  | IncByte
+  | DecByte
+  | OutputByte
+  | InputByte
   | CondJmpFwd
   | CondJmpBwd
   deriving (Eq)
@@ -17,9 +17,9 @@ data BFCommand
 instance Show BFCommand where
   show IncDataPtr = ">"
   show DecDataPtr = "<"
-  show IncData = "+"
-  show DecData = "-"
-  show OutputData = "."
-  show InputData = ","
+  show IncByte = "+"
+  show DecByte = "-"
+  show OutputByte = "."
+  show InputByte = ","
   show CondJmpFwd = "["
   show CondJmpBwd = "]"
