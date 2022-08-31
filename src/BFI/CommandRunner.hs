@@ -80,7 +80,7 @@ splitCommandsByCorrespondingCondJmpBwd (CondJmpBwd : cs) =
 splitCommandsByCorrespondingCondJmpBwd (CondJmpFwd : cs) = do
   (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
   (lrcs, rrcs) <- splitCommandsByCorrespondingCondJmpBwd rcs
-  return (CondJmpFwd : lcs ++ [CondJmpBwd] ++ lrcs, rrcs)
+  return ((CondJmpFwd : lcs) ++ (CondJmpBwd : lrcs), rrcs)
 splitCommandsByCorrespondingCondJmpBwd (c : cs) = do
   (lcs, rcs) <- splitCommandsByCorrespondingCondJmpBwd cs
   return (c : lcs, rcs)
