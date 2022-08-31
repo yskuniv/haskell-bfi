@@ -7,13 +7,13 @@ where
 
 import BFI.BFMemory
   ( BFMemoryActionT,
-    decBFMemoryData,
-    decBFMemoryPtr,
-    getBFMemoryData,
-    incBFMemoryData,
-    incBFMemoryPtr,
+    decByteOfMemory,
+    decDataPtrOfMemory,
+    getByteFromMemory,
+    incByteOfMemory,
+    incDataPtrOfMemory,
     runBFMemoryT,
-    setBFMemoryData,
+    setByteToMemory,
   )
 import BFI.Data.BFCommand (BFCommand (..))
 import BFI.Utils.ByteIO (getByte, putByte)
@@ -51,24 +51,24 @@ runCommands (c : cs) = do
 
 runCommand :: BFCommand -> BFIAction ()
 runCommand IncDataPtr = do
-  lift incBFMemoryPtr
+  lift incDataPtrOfMemory
 runCommand DecDataPtr = do
-  lift decBFMemoryPtr
+  lift decDataPtrOfMemory
 runCommand IncByte = do
-  lift incBFMemoryData
+  lift incByteOfMemory
 runCommand DecByte = do
-  lift decBFMemoryData
+  lift decByteOfMemory
 runCommand OutputByte = do
-  v <- lift getBFMemoryData
+  v <- lift getByteFromMemory
   liftIO $ putByte v
 runCommand InputByte = do
   v <- liftIO getByte
-  lift $ setBFMemoryData v
+  lift $ setByteToMemory v
 runCommand _ = throwError "*** BUG ***"
 
 condRepeatRunCommands :: [BFCommand] -> BFIAction ()
 condRepeatRunCommands commands = do
-  v <- lift getBFMemoryData
+  v <- lift getByteFromMemory
   when (v /= 0) $ do
     runCommands commands
     condRepeatRunCommands commands
