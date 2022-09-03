@@ -2,6 +2,17 @@ module Main (main) where
 
 import BFI.Interpreter (runBFFile)
 import Options.Applicative
+  ( argument,
+    execParser,
+    fullDesc,
+    header,
+    helper,
+    info,
+    metavar,
+    progDesc,
+    str,
+    (<**>),
+  )
 
 main :: IO ()
 main = runBFFile =<< execParser opts
