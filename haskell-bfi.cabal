@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.3.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 
@@ -24,7 +24,13 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      BFI.BFMemory
+      BFI.CommandRunner
+      BFI.Data.BFCommand
+      BFI.Interpreter
+      BFI.Parser
+      BFI.Utils.ByteIO
+      BFI.Utils.DataArray
   other-modules:
       Paths_haskell_bfi
   hs-source-dirs:
@@ -32,6 +38,10 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , binary
+    , bytestring
+    , mtl
+    , optparse-applicative
   default-language: Haskell2010
 
 executable bfi
@@ -43,7 +53,11 @@ executable bfi
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , binary
+    , bytestring
     , haskell-bfi
+    , mtl
+    , optparse-applicative
   default-language: Haskell2010
 
 test-suite haskell-bfi-test
@@ -56,5 +70,9 @@ test-suite haskell-bfi-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , binary
+    , bytestring
     , haskell-bfi
+    , mtl
+    , optparse-applicative
   default-language: Haskell2010
