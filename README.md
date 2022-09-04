@@ -52,7 +52,7 @@ Hello World!
 $
 ```
 
-Or if you want to run with just `bfi`, adjust your `PATH` like the following, or write the export part in your `~/.bashrc`.
+Or if you want to run it just like `bfi`, adjust your `PATH` like the following, or write the export part in your `~/.bashrc`.
 
 ```console
 $ export PATH="$HOME/.local/bin:$PATH"
