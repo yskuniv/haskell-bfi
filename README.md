@@ -1,5 +1,5 @@
 # haskell-bfi
-A brainf*ck interpreter written in Haskell
+A brainf*ck interpreter implemented in haskell.
 
 ## Installation
 First of all, you need to setup the Haskell building and execution environment (like GHC and Stack).
