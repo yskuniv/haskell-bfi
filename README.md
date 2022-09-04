@@ -16,7 +16,7 @@ $ git clone https://github.com/yskuniv/haskell-bfi.git
 $ cd haskell-bfi/
 ```
 
-Run `stack build` to build.
+Run `stack build` to build the interpreter.
 
 ```console
 $ stack build
