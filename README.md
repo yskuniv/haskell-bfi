@@ -9,16 +9,16 @@ To construct it, I recommend [GHCup](https://www.haskell.org/ghcup/), because it
 See https://www.haskell.org/ghcup/ and follow the instructions on the page.
 
 ## Usage
-First, clone this repository at anywhere you want.
+First, clone this repository at anywhere you want, then change the directory.
 
 ```console
 $ git clone https://github.com/yskuniv/haskell-bfi.git
+$ cd haskell-bfi/
 ```
 
-Then, change the directory and run `stack build`.
+Run `stack build` to build.
 
 ```console
-$ cd haskell-bfi/
 $ stack build
 ```
 
