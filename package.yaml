@@ -1,14 +1,13 @@
 name:                haskell-bfi
 version:             0.1.0.0
-github:              "githubuser/haskell-bfi"
+github:              "yskuniv/haskell-bfi"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+author:              "ysk"
+maintainer:          "ysk.univ.1007@gmail.com"
+copyright:           "2022 ysk"
 
 extra-source-files:
 - README.md
-- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -21,6 +20,10 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- binary
+- bytestring
+- mtl
+- optparse-applicative
 
 ghc-options:
 - -Wall
@@ -37,7 +40,7 @@ library:
   source-dirs: src
 
 executables:
-  haskell-bfi-exe:
+  bfi:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
