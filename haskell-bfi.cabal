@@ -5,8 +5,8 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           haskell-bfi
-version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/haskell-bfi#readme>
+version:        0.1.0.1
+description:    Please see the README on GitHub at <https://github.com/yskuniv/haskell-bfi#readme>
 homepage:       https://github.com/yskuniv/haskell-bfi#readme
 bug-reports:    https://github.com/yskuniv/haskell-bfi/issues
 author:         ysk

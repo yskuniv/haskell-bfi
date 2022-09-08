@@ -1,5 +1,5 @@
 name:                haskell-bfi
-version:             0.1.0.0
+version:             0.1.0.1
 github:              "yskuniv/haskell-bfi"
 license:             BSD3
 author:              "ysk"
@@ -16,7 +16,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/haskell-bfi#readme>
+description:         Please see the README on GitHub at <https://github.com/yskuniv/haskell-bfi#readme>
 
 dependencies:
 - base >= 4.7 && < 5
