@@ -44,7 +44,7 @@ Available options:
 $
 ```
 
-If you want to install the command for using it, you can do it by `stack install`. By default, maybe it's installed at `${HOME}/.local/bin`. Now you can run the command like the following.
+If you want to install the command for using it, you can do that by `stack install`. By default, maybe it's installed at `${HOME}/.local/bin`. Now you can run the command like the following.
 
 ```console
 $ ${HOME}/.local/bin/bfi samples/helloworld.bf
